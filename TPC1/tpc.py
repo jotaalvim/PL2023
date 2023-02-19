@@ -24,7 +24,6 @@ def parse(linhas):
 
 def draw(names, values):
     plt.figure(figsize=(8, 3))
-    #plt.subplot(131)
     plt.bar(names, values)
     #plt.suptitle('sexo por doença')
     plt.show()
@@ -55,10 +54,7 @@ def exercicio2(todos:list) -> (list, list):
         doenca = dic["temDoenca"]
         if doenca:
             i = idade // 5
-            if i in aux:
-                aux[i] += 1
-            else:
-                aux[i] = 1
+            aux[i] = aux[i] + 1 if i in aux else 1
 
     names = []
     mk = max(aux.keys())
@@ -77,18 +73,15 @@ def exercicio3(todos:list) -> (list, list):
         doenca = dic["temDoenca"]
         if doenca:
             i = col // 10
-            if i in aux:
-                aux[i] += 1
-            else:
-                aux[i] = 1
+            aux[i] = aux[i] + 1 if i in aux else 1
     names = []
     mk = max(aux.keys())
+    aux[0] = 0               # não vale ter colesterol a 0
     values = [ aux.get(n,0)   for n in range(mk) ]
     a = 0
     while a < mk* 10:
         names.append( str([a,a+9]) )
         a+= 10
-
     return names, values
 
 
@@ -96,10 +89,8 @@ todos = parse(linhas)
 
 #a,b = exercicio1(todos)
 
-#a,b = exercicio2(todos)
+a,b = exercicio2(todos)
 
-a,b = exercicio3(todos)
+#a,b = exercicio3(todos)
 
 draw(a,list(b))
-
-
