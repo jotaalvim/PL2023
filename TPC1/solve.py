@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import re
 
-file = open("../myheart.csv", "r")
+file = open("myheart.csv", "r")
 
 content = file.read()
 
@@ -22,11 +22,13 @@ def parse(linhas):
     return lista
 
 
-def draw(names, values):
-    plt.figure(figsize=(8, 3))
-    plt.bar(names, values)
-    #plt.suptitle('sexo por doença')
-    plt.show()
+def draw(names):
+    def _draw(values):
+        plt.figure(figsize=(8, 3))
+        plt.bar(names, values)
+        #plt.suptitle('sexo por doença')
+        return plt.show()
+    return _draw
 
              # todos :: [dict]
 def exercicio1(todos: list) -> (list,list):
@@ -79,7 +81,7 @@ def exercicio3(todos:list) -> (list, list):
     aux[0] = 0               # não vale ter colesterol a 0
     values = [ aux.get(n,0)   for n in range(mk) ]
     a = 0
-    while a < mk* 10:
+    while a < mk * 10:
         names.append( str([a,a+9]) )
         a+= 10
     return names, values
@@ -93,4 +95,4 @@ a,b = exercicio2(todos)
 
 #a,b = exercicio3(todos)
 
-draw(a,list(b))
+draw(a) (list(b))
