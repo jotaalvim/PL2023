@@ -1,9 +1,8 @@
 import re
 
-def parse(data,state,value):
-    #False = OFF
-    #True  = ON
-    if not data: return 
+def parse(data,state,value): #False = OFF #True  = ON
+    if not data: return state,value
+
     if re.search(r'^[oO][fF]{2}',data):
         data = data[3:]
         state = False
@@ -17,11 +16,17 @@ def parse(data,state,value):
         print("value =",value)
 
     match = re.match(r'^(-?\d+\.?\d*)',data)
+
     if state and (match != None):
         value += float(match.group(0))
-        parse(data[len(match.group(0)):],state,value)
+        return parse(data[len(match.group(0)):],state,value)
     else: 
-        parse(data[1:],state,value)
+        return parse(data[1:],state,value)
 
-i = input()
-parse(i,True,0)
+a,b = True,0
+while True:
+    try:
+        i = input()
+        a,b = parse(i,a,b)
+    except:
+        break;
