@@ -1,4 +1,5 @@
 import re
+import sys
 
 def parse(data,state,value): #False = OFF #True  = ON
     if not data: return state,value
@@ -24,9 +25,5 @@ def parse(data,state,value): #False = OFF #True  = ON
         return parse(data[1:],state,value)
 
 a,b = True,0
-while True:
-    try:
-        i = input()
-        a,b = parse(i,a,b)
-    except:
-        break;
+for linha in sys.stdin:
+    a,b = parse(linha,a,b)

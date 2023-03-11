@@ -15,7 +15,7 @@ for linha in data:
         registos.append(m.groupdict())
 
 # exercício a
-#os.system("awk -F:: '{print $2}' processos.txt | awk -F- '{print $1}' | sort | uniq -c")
+os.system("awk -F:: '{print $2}' processos.txt | awk -F- '{print $1}' | sort | uniq -c")
 
 # exercício b
 
@@ -66,14 +66,13 @@ parentes = {}
 for reg in registos:
     #print(reg['observacoes'])
     # modo não greedy
-    l = re.findall(r',(.+?)\.\s*Proc', reg['observacoes'])
+    l = re.findall(r'\,(\w+)(?:\s+\w+\.?)*\s(\w+)', reg['observacoes'])
     for gp in l:
         if gp in parentes:
             parentes[gp] += 1
         else:
             parentes[gp] = 1
 #print(parentes)
-
 
     #"Sobrinho"
     #"Tio Materno"
@@ -83,6 +82,7 @@ for reg in registos:
     #"Avo Materno"
     #"Avo Materno"
     #"Irmao"
+    #"Irmaos"
 
 # exercício d
 with open("processos.json","w") as f:
