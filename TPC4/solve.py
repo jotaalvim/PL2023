@@ -22,7 +22,6 @@ def fill(field):
     f = eval(f) if f else (id if m > 1 else fst)
     return n,i,m,f 
 
-@pointfree
 def makeDict(cab,linha):
     dic = {}
     linha = linha.strip()
@@ -39,7 +38,7 @@ with open(path,'r') as f:
     head, *lines = f.readlines()
     l1 = pfcollect * pfmap(fill) * parse
     cabecalho = l1 (head)
-    ll = [makeDict(cabecalho,line) for line in lines]
+    ll = [ makeDict(cabecalho,line) for line in lines]
 
 with open(path[:-4]+'.json','w') as f:
     json.dump(ll,f)
