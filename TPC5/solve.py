@@ -29,12 +29,7 @@ def saldo(euro:list,cent:list):
     money = (e+a,c) 
     return  f'saldo : {e+a}e{c}c'
 
-tokens = (
-    'LEVANTAR',
-    'POUSAR',
-    'MOEDA',
-    'TELEMOVEL'
-)
+tokens = ('_',)
 
 t_ANY_ignore= "\n \t"
 
@@ -105,4 +100,3 @@ POUSAR"""
 
 lexer.input(data)
 lexer.token()
-

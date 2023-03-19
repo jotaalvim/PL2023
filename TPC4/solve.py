@@ -33,7 +33,7 @@ def makeDict(cab,linha):
         linha = linha [len(match):]
     return dic
 
-path = "alunos5.csv"
+path = "alunos3.csv"
 with open(path,'r') as f:
     head, *lines = f.readlines()
     l1 = pfcollect * pfmap(fill) * parse
