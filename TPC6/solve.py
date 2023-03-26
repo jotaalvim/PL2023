@@ -59,18 +59,22 @@ tokens = (
    'RBRACKET',
    'LLIST',
    'RLIST',
+   'PALAVRA',
+   'ATRIB',
 )
 
-t_PLUS    = r'\+'
-t_MINUS   = r'-'
-t_TIMES   = r'\*'
-t_DIVIDE  = r'/'
-t_LPAREN  = r'\('
-t_RPAREN  = r'\)'
-t_LBRACKET  = r'\{'
-t_RBRACKET  = r'\}'
-t_LLIST  = r'\['
-t_RLIST  = r'\]'
+t_PLUS     = r'\+'
+t_MINUS    = r'-'
+t_TIMES    = r'\*'
+t_DIVIDE   = r'/'
+t_LPAREN   = r'\('
+t_RPAREN   = r'\)'
+t_LBRACKET = r'\{'
+t_RBRACKET = r'\}'
+t_LLIST    = r'\['
+t_RLIST    = r'\]'
+t_PALAVRA  = r'\w+'
+t_ATRIB    = r'='
 
 t_ignore = "\n \t"
 def t_NUMBER(t):
